@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>level</name>
+    <events>
+        <event-block sid="760678820969439">
+            <conditions>
+                <condition id="3" name="On touched object" sid="610170982772047" type="Touch">
+                    <param id="0" name="Object">asdas</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Clear local storage" sid="634439352571674" type="WebStorage" />
+                <action id="-26" name="Restart layout" sid="436050266119756" type="System" />
+            </actions>
+        </event-block>
+        <event-block sid="606221048258941">
+            <conditions>
+                <condition id="3" name="On touched object" sid="280690115766123" type="Touch">
+                    <param id="0" name="Object">level_select</param>
+                </condition>
+                <condition id="3" name="Compare frame" sid="269581594217380" type="level_select">
+                    <param id="0" name="Comparison">1</param>
+                    <param id="1" name="Number">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" sid="135995477003027" type="System">
+                    <param id="0" name="Layout">&quot;level&quot;&amp;level_select.level</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="639139954967533">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="602112413699836" type="System" />
+                <condition id="3" inverted="1" name="Local key exists" sid="684056864416352" type="WebStorage">
+                    <param id="0" name="Key">&quot;currentLevel&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set local value" sid="420513487408544" type="WebStorage">
+                    <param id="0" name="Key">&quot;currentLevel&quot;</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="288955679680836">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="265403844642221" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="570897755375132">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="901186646324156" type="System">
+                            <param id="0" name="Object">level_select</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="822449969256720">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="923702957625076" type="System">
+                                    <param id="0" name="First value">int(WebStorage.LocalValue(&quot;currentLevel&quot;))</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Second value">level_select.level</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="990467733981954" type="level_select">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="626557960594215">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="902449133782669" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="903072087027284">
+                    <conditions>
+                        <condition id="-10" name="For" sid="391868424841347" type="System">
+                            <param id="0" name="Name">&quot;for&quot;</param>
+                            <param id="1" name="Start index">1</param>
+                            <param id="2" name="End index">level_select.Count</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="409815234703421">
+                            <conditions>
+                                <condition id="3" inverted="1" name="Local key exists" sid="789790369786286" type="WebStorage">
+                                    <param id="0" name="Key">&quot;EF&quot;&amp;loopindex</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set local value" sid="932944887392374" type="WebStorage">
+                                    <param id="0" name="Key">&quot;EF&quot;&amp;loopindex</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="186921849583605">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="353328610902131" type="level_select">
+                                    <param id="0" name="Instance variable">level</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">loopindex</param>
+                                </condition>
+                                <condition id="7" name="Compare key value (as number)" sid="268646038843195" type="WebStorage">
+                                    <param id="0" name="Key">&quot;EF&quot;&amp;loopindex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">4</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="929717789753020" type="level_select">
+                                    <param id="0" name="Frame number">4</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="539644983312889">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="110854280181273" type="level_select">
+                                    <param id="0" name="Instance variable">level</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">loopindex</param>
+                                </condition>
+                                <condition id="7" name="Compare key value (as number)" sid="767280629455797" type="WebStorage">
+                                    <param id="0" name="Key">&quot;EF&quot;&amp;loopindex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">3</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="707531429004383" type="level_select">
+                                    <param id="0" name="Frame number">3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="466468107737034">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="786480295568607" type="level_select">
+                                    <param id="0" name="Instance variable">level</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">loopindex</param>
+                                </condition>
+                                <condition id="7" name="Compare key value (as number)" sid="733595332598653" type="WebStorage">
+                                    <param id="0" name="Key">&quot;EF&quot;&amp;loopindex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="844019380571514" type="level_select">
+                                    <param id="0" name="Frame number">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="579771519413734">
+            <conditions>
+                <condition id="3" name="On touched object" sid="314582827317089" type="Touch">
+                    <param id="0" name="Object">go_home</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="277289073260880" type="System">
+                    <param id="0" name="Layout">home</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="838513811394066">
+            <conditions>
+                <condition id="17" name="On tap object" sid="239735540537458" type="Touch">
+                    <param id="0" name="Object">moregames</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="8" name="Open URL in new window" sid="915626361056574" type="Browser">
+                    <param id="0" name="URL">&quot;http://mixygames.com&quot;</param>
+                    <param id="1" name="Tag">&quot;NewWindow&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="252501093372181">
+            <conditions>
+                <condition id="17" name="On tap object" sid="161556741916308" type="Touch">
+                    <param id="0" name="Object">facebook</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="8" name="Open URL in new window" sid="426720750271493" type="Browser">
+                    <param id="0" name="URL">&quot;http://www.facebook.com/bnagames/?ref=aymt_homepage_panel&quot;</param>
+                    <param id="1" name="Tag">&quot;NewWindow&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

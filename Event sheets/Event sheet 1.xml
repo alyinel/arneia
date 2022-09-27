@@ -1,0 +1,1801 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable constant="0" name="Music" sid="469714663734856" static="0" type="text">on</variable>
+        <variable constant="0" name="Sound" sid="868157177600142" static="0" type="text">on</variable>
+        <variable constant="0" name="bullets" sid="852415945463652" static="0" type="number">0</variable>
+        <variable constant="0" name="star_count" sid="120171565586150" static="0" type="number">0</variable>
+        <variable constant="0" name="tempo" sid="183420459642205" static="0" type="number">30</variable>
+        <variable constant="0" name="stars" sid="547996254399301" static="0" type="number">0</variable>
+        <variable constant="0" name="zombie_count" sid="749191549742862" static="0" type="number">0</variable>
+        <variable constant="0" name="vidas_personagem" sid="113403080584013" static="0" type="number">3</variable>
+        <variable constant="0" name="receber_atack" sid="100429122812640" static="0" type="number">0</variable>
+        <event-block sid="511089783420310">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="914870306450777" type="Keyboard">
+                    <param id="0" name="Key">39 (Right arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="463997067756448" type="personagem">
+                    <param id="0" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="821778916488147">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="486975489519709" type="Touch">
+                    <param id="0" name="Object">arrowright</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="643755701800227" type="personagem">
+                    <param id="0" name="State">1</param>
+                </action>
+                <action behavior="Platform" id="7" name="Simulate control" sid="696116773489441" type="alma_personagem">
+                    <param id="0" name="Control">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="849058154700558">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="749386152789625" type="Keyboard">
+                    <param id="0" name="Key">37 (Left arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="667373436269376" type="personagem">
+                    <param id="0" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="394846121446267">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="958789464527799" type="Touch">
+                    <param id="0" name="Object">arrowLeft</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="749288541021340" type="personagem">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action behavior="Platform" id="7" name="Simulate control" sid="375633264034117" type="alma_personagem">
+                    <param id="0" name="Control">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="102771209442675">
+            <conditions>
+                <condition id="3" name="On touched object" sid="870791081894330" type="Touch">
+                    <param id="0" name="Object">arrowright2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="7" name="Simulate control" sid="517853465611466" type="alma_personagem">
+                    <param id="0" name="Control">2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="725701655162730">
+            <conditions>
+                <condition behavior="Platform" id="2" name="Is on floor" sid="947415805731852" type="alma_personagem" />
+                <condition id="2" inverted="1" name="Is playing" sid="336234018195691" type="personagem">
+                    <param id="0" name="Animation">&quot;atirandoParado&quot;</param>
+                </condition>
+                <condition id="2" inverted="1" name="Is playing" sid="653858247649445" type="personagem">
+                    <param id="0" name="Animation">&quot;atirandoCorrendo&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="924254183122201">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="227642710839716" type="alma_personagem">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="404895931534142" type="personagem">
+                            <param id="0" name="Animation">&quot;parado&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="453021880757711">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="519894624906722" type="alma_personagem">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="205565398700445" type="personagem">
+                            <param id="0" name="Animation">&quot;correndo&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="886838574267844">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="542014614281757" type="System" />
+            </conditions>
+            <actions>
+                <action behavior="Pin" id="0" name="Pin to object" sid="169176763637213" type="personagem">
+                    <param id="0" name="Pin to">alma_personagem</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="140303875062708" type="System">
+                    <param id="0" name="Variable">zombie_count</param>
+                    <param id="1" name="Value">zombies.Count</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="611840575693835" type="System">
+                    <param id="0" name="Layer">&quot;gameover&quot;</param>
+                    <param id="1" name="Visibility">0</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="191087839102206" type="System">
+                    <param id="0" name="Layer">&quot;failed&quot;</param>
+                    <param id="1" name="Visibility">0</param>
+                </action>
+                <action behavior="ScrollTo" id="1" name="Set enabled" sid="564240432244407" type="gameover">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action behavior="ScrollTo" id="1" name="Set enabled" sid="519322567365805" type="HUDGAMEOVER">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action behavior="ScrollTo" id="1" name="Set enabled" sid="173949582560392" type="personagem">
+                    <param id="0" name="State">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="811610712914699" type="System">
+                    <param id="0" name="Variable">vidas_personagem</param>
+                    <param id="1" name="Value">3</param>
+                </action>
+                <action id="-9" name="Set value" sid="235231056561731" type="System">
+                    <param id="0" name="Variable">stars</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action behavior="LineOfSight" id="0" name="Set range" sid="172679564122448" type="zombie_1">
+                    <param id="0" name="Range">500</param>
+                </action>
+                <action behavior="LineOfSight" id="0" name="Set range" sid="321068665134832" type="zombie_2">
+                    <param id="0" name="Range">500</param>
+                </action>
+                <action id="-9" name="Set value" sid="614328821278206" type="System">
+                    <param id="0" name="Variable">star_count</param>
+                    <param id="1" name="Value">star.Count</param>
+                </action>
+                <action id="-9" name="Set value" sid="849469234578528" type="System">
+                    <param id="0" name="Variable">bullets</param>
+                    <param id="1" name="Value">10</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="143641197477826">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="276975355655970" type="btn_next_level">
+                            <param id="0" name="Instance variable">next_level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="405984049038991" type="System">
+                            <param id="0" name="Variable">tempo</param>
+                            <param id="1" name="Value">15</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="409461429061299">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="640431020081389" type="btn_next_level">
+                            <param id="0" name="Instance variable">next_level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="910190018983551" type="System">
+                            <param id="0" name="Variable">tempo</param>
+                            <param id="1" name="Value">25</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="299563591714571">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="949635179912255" type="btn_next_level">
+                            <param id="0" name="Instance variable">next_level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">4</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="794666908403458" type="System">
+                            <param id="0" name="Variable">tempo</param>
+                            <param id="1" name="Value">35</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="332448403661183">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="382266077821752" type="btn_next_level">
+                            <param id="0" name="Instance variable">next_level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="548016144037947" type="System">
+                            <param id="0" name="Variable">tempo</param>
+                            <param id="1" name="Value">42</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="783128232974245">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="329760307070606" type="btn_next_level">
+                            <param id="0" name="Instance variable">next_level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">6</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="887634837194475" type="System">
+                            <param id="0" name="Variable">tempo</param>
+                            <param id="1" name="Value">60</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="147173544105103">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="577748666577400" type="System">
+                            <param id="0" name="Variable">Music</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;on&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="405449236996236" type="Audio">
+                            <param id="0" name="Audio file">MainMenu</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">-10</param>
+                            <param id="1" name="Tag (optional)">&quot;music&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="431754779053743">
+            <conditions>
+                <condition behavior="Platform" id="5" name="On jump" sid="759571277603821" type="alma_personagem" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="206469958034289" type="personagem">
+                    <param id="0" name="Animation">&quot;pulando&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="870566504400267">
+            <conditions>
+                <condition id="3" name="On touched object" sid="451056666193917" type="Touch">
+                    <param id="0" name="Object">btn_tiro</param>
+                </condition>
+                <condition id="2" inverted="1" name="Is playing" sid="576184094847023" type="personagem">
+                    <param id="0" name="Animation">&quot;atirandoParado&quot;</param>
+                </condition>
+                <condition id="2" inverted="1" name="Is playing" sid="950869720792655" type="personagem">
+                    <param id="0" name="Animation">&quot;AtirandoPulando&quot;</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="288217636486246" type="System">
+                    <param id="0" name="Variable">bullets</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Subtract from" sid="543774384790052" type="System">
+                    <param id="0" name="Variable">bullets</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Set text" sid="406766311243653" type="txt_bullets">
+                    <param id="0" name="Text">bullets</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="301665019269466">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="861653398456121" type="alma_personagem">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="753402037731012" type="personagem">
+                            <param id="0" name="Animation">&quot;atirandoParado&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="901272064883048">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="220314832406062" type="alma_personagem">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="955452058376906" type="personagem">
+                            <param id="0" name="Animation">&quot;atirandoCorrendo&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="480142131118076">
+                    <conditions>
+                        <condition behavior="Platform" id="3" name="Is jumping" sid="126426976325429" type="alma_personagem" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="897015413578459" type="personagem">
+                            <param id="0" name="Animation">&quot;AtirandoPulando&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="196258008658814">
+                    <conditions>
+                        <condition id="7" name="Is mirrored" sid="708215667758096" type="personagem" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="848830250466965" type="personagem">
+                            <param id="0" name="Object">Bullet_</param>
+                            <param id="1" name="Layer">&quot;main&quot;</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="545929075765176" type="Bullet_">
+                            <param id="0" name="Angle">180</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="908565348019337" type="Bullet_">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="304803080709597">
+                    <conditions>
+                        <condition id="7" inverted="1" name="Is mirrored" sid="994072000664126" type="personagem" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="405463904145198" type="personagem">
+                            <param id="0" name="Object">Bullet_</param>
+                            <param id="1" name="Layer">&quot;main&quot;</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="920530908442310" type="Bullet_">
+                            <param id="0" name="Angle">0</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="606989401496164" type="Bullet_">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="191393927564308">
+            <conditions>
+                <condition id="4" name="On finished" sid="403997052068280" type="personagem">
+                    <param id="0" name="Animation">&quot;atirandoCorrendo&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="838320811847649">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="285432666260343" type="alma_personagem">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="671063223596792" type="personagem">
+                            <param id="0" name="Animation">&quot;parado&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="421569127986606">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="491818773512556" type="alma_personagem">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="563688433057017" type="personagem">
+                            <param id="0" name="Animation">&quot;correndo&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="199897805343588">
+            <conditions>
+                <condition id="4" name="On finished" sid="847396059207648" type="personagem">
+                    <param id="0" name="Animation">&quot;atirandoParado&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="105700449039540">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="707617071833186" type="alma_personagem">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="457042850972349" type="personagem">
+                            <param id="0" name="Animation">&quot;parado&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="792515551174843">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="693711821793561" type="alma_personagem">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="255521204818181" type="personagem">
+                            <param id="0" name="Animation">&quot;correndo&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="680951200416379">
+            <conditions>
+                <condition id="2" name="Key is down" sid="597284918678995" type="Keyboard">
+                    <param id="0" name="Key">32 (Space)</param>
+                </condition>
+                <condition id="2" inverted="1" name="Is playing" sid="372660804483038" type="personagem">
+                    <param id="0" name="Animation">&quot;atirandoParado&quot;</param>
+                </condition>
+                <condition id="2" inverted="1" name="Is playing" sid="117807270446983" type="personagem">
+                    <param id="0" name="Animation">&quot;AtirandoPulando&quot;</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="139403962246348" type="System">
+                    <param id="0" name="Variable">bullets</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Subtract from" sid="461500924884313" type="System">
+                    <param id="0" name="Variable">bullets</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Set text" sid="834153682120965" type="txt_bullets">
+                    <param id="0" name="Text">bullets</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="174119806942531">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="963261683097765" type="alma_personagem">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="926843061491249" type="personagem">
+                            <param id="0" name="Animation">&quot;atirandoParado&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="412670464576470">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="894210113027120" type="alma_personagem">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="329408758717908" type="personagem">
+                            <param id="0" name="Animation">&quot;atirandoCorrendo&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="424969772277737">
+                    <conditions>
+                        <condition behavior="Platform" id="3" name="Is jumping" sid="451478203866821" type="alma_personagem" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="954924167201057" type="personagem">
+                            <param id="0" name="Animation">&quot;AtirandoPulando&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="857389080120596">
+                    <conditions>
+                        <condition id="7" name="Is mirrored" sid="924213707552238" type="personagem" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="104609596338720" type="personagem">
+                            <param id="0" name="Object">Bullet_</param>
+                            <param id="1" name="Layer">&quot;main&quot;</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="485434488586523" type="Bullet_">
+                            <param id="0" name="Angle">180</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="823847341755624" type="Bullet_">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="180434608750515">
+                    <conditions>
+                        <condition id="7" inverted="1" name="Is mirrored" sid="877407345398293" type="personagem" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="479585738721097" type="personagem">
+                            <param id="0" name="Object">Bullet_</param>
+                            <param id="1" name="Layer">&quot;main&quot;</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="844617487458160" type="Bullet_">
+                            <param id="0" name="Angle">0</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="950091702494113" type="Bullet_">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="450720076622213">
+            <conditions>
+                <condition id="4" name="On finished" sid="966162527729078" type="personagem">
+                    <param id="0" name="Animation">&quot;atirandoCorrendo&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="397666603866318">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="336343633789289" type="alma_personagem">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="723229347756354" type="personagem">
+                            <param id="0" name="Animation">&quot;parado&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="451931779950253">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="787640604492557" type="alma_personagem">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="786814957433651" type="personagem">
+                            <param id="0" name="Animation">&quot;correndo&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="997577204215032">
+            <conditions>
+                <condition id="4" name="On finished" sid="570607102130301" type="personagem">
+                    <param id="0" name="Animation">&quot;atirandoParado&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="257021196617749">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="613907062781215" type="System">
+                            <param id="0" name="Variable">Sound</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;on&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="386442816399780" type="Audio">
+                            <param id="0" name="Audio file">shoot_sound</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="536021373598318">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="349987667536948" type="alma_personagem">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="689763698821171" type="personagem">
+                            <param id="0" name="Animation">&quot;parado&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="549485122003363">
+                    <conditions>
+                        <condition behavior="Platform" id="1" name="Compare speed" sid="401055819469607" type="alma_personagem">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Speed">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="344978381304856" type="personagem">
+                            <param id="0" name="Animation">&quot;correndo&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" sid="708294280931465" title="Colissions">
+            <sub-events>
+                <event-block sid="596810253033326">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="712972412890174" type="Bullet_">
+                            <param id="0" name="Object">zombie_1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="301367572563080">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="641950925904973" type="zombie_1">
+                                    <param id="0" name="Instance variable">vidas</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="980273874456081" type="Bullet_" />
+                                <action id="-12" name="Subtract from" sid="268887008431874" type="zombie_1">
+                                    <param id="0" name="Instance variable">vidas</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="550960620456058">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="996179176737515" type="Bullet_">
+                            <param id="0" name="Object">zombie_2</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="952489439431513">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="284147495946954" type="zombie_2">
+                                    <param id="0" name="Instance variable">vidas</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="557330353790226" type="Bullet_" />
+                                <action id="-12" name="Subtract from" sid="289657103172038" type="zombie_2">
+                                    <param id="0" name="Instance variable">vidas</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="767567913250791">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="360206510148235" type="zombie_1">
+                    <param id="0" name="Instance variable">vidas</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="11" name="Set enabled" sid="490589597722758" type="zombie_1">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action id="4" name="Set animation" sid="982400760542830" type="zombie_1">
+                    <param id="0" name="Animation">&quot;morte&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action behavior="Fade" id="1" name="Start fade" sid="277428567974903" type="zombie_1" />
+            </actions>
+        </event-block>
+        <event-block sid="409472274266642">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="199333074008780" type="zombie_2">
+                    <param id="0" name="Instance variable">vidas</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="11" name="Set enabled" sid="418384825105661" type="zombie_2">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action id="4" name="Set animation" sid="314392302940897" type="zombie_2">
+                    <param id="0" name="Animation">&quot;morte&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action behavior="Fade" id="1" name="Start fade" sid="655674840984985" type="zombie_2" />
+            </actions>
+        </event-block>
+        <event-block sid="156080117208415">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="448163339157629" type="System">
+                    <param id="0" name="Variable">vidas_personagem</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" sid="178590061857013" type="1vida">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="489774855750094">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="170715899570632" type="System">
+                    <param id="0" name="Variable">vidas_personagem</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" sid="753959403210795" type="1vida">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="242229071801887">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="469334356253646" type="System">
+                    <param id="0" name="Variable">vidas_personagem</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">3</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" sid="238922308265014" type="1vida">
+                    <param id="0" name="Frame number">2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="784649950156247">
+            <conditions>
+                <condition behavior="LineOfSight" id="0" name="Has LOS to object" sid="829806754810690" type="zombie_1">
+                    <param id="0" name="Object">personagem</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="241548963039569">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="549748029814861" type="zombie_1">
+                            <param id="0" name="Instance variable">zombie</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="684617678330412">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="972837837890784" type="zombie_1">
+                                    <param id="0" name="Instance variable">direcao</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="2" inverted="1" name="Is playing" sid="682052301569095" type="zombie_1">
+                                    <param id="0" name="Animation">&quot;morte&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="544481617125082" type="zombie_1">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="181238219044140" type="zombie_1">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="125643780476142">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="186024548757396" type="zombie_1">
+                                    <param id="0" name="Instance variable">direcao</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                                <condition id="2" inverted="1" name="Is playing" sid="631195024247254" type="zombie_1">
+                                    <param id="0" name="Animation">&quot;morte&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="983327511521588" type="zombie_1">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="162210833054347" type="zombie_1">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="259442514999984">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="750735756415993" type="zombie_1">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="X co-ordinate">alma_personagem.X-5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="310911875644887" type="zombie_1">
+                                    <param id="0" name="Instance variable">direcao</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="970539353949718">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="228015634403040" type="zombie_1">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="X co-ordinate">alma_personagem.X+5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="494599477845628" type="zombie_1">
+                                    <param id="0" name="Instance variable">direcao</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="523696247328586">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="772070251000898" type="zombie_1">
+                                    <param id="0" name="Object">alma_personagem</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="859238708125045" type="zombie_1">
+                                    <param id="0" name="Instance variable">vidas</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="746065400014809" type="zombie_1">
+                                    <param id="0" name="Animation">&quot;ataque&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="478182270420367">
+                            <conditions>
+                                <condition id="1" inverted="1" name="Is overlapping another object" sid="282453657014417" type="zombie_1">
+                                    <param id="0" name="Object">alma_personagem</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="770433788799355" type="zombie_1">
+                                    <param id="0" name="Instance variable">vidas</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="719406432056788" type="zombie_1">
+                                    <param id="0" name="Animation">&quot;Andando&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="567897408546400">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="907817149128283" type="zombie_1">
+                                    <param id="0" name="Object">personagem</param>
+                                </condition>
+                                <condition id="2" name="Is playing" sid="908808742787244" type="zombie_1">
+                                    <param id="0" name="Animation">&quot;ataque&quot;</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="611017617356984" type="System">
+                                    <param id="0" name="Variable">receber_atack</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="543317311552922" type="zombie_1">
+                                    <param id="0" name="Instance variable">vidas</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Flash" id="0" name="Flash" sid="118987912567917" type="personagem">
+                                    <param id="0" name="&apos;On&apos; time">0.1</param>
+                                    <param id="1" name="&apos;Off&apos; time">0.1</param>
+                                    <param id="2" name="Duration">1.0</param>
+                                </action>
+                                <action id="-11" name="Subtract from" sid="992199118102614" type="System">
+                                    <param id="0" name="Variable">vidas_personagem</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="649987564645443" type="System">
+                                    <param id="0" name="Variable">receber_atack</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="313848895339340" type="System">
+                                    <param id="0" name="Seconds">1.0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="212611446581042" type="System">
+                                    <param id="0" name="Variable">receber_atack</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="140134480628312">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="256010064124513" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="575296223420069" type="zombie_1">
+                            <param id="0" name="Instance variable">zombie</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="745587379938997" type="zombie_1">
+                            <param id="0" name="Animation">&quot;parado&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="726915616497262">
+            <conditions>
+                <condition behavior="LineOfSight" id="0" name="Has LOS to object" sid="829667207216004" type="zombie_2">
+                    <param id="0" name="Object">personagem</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="679304716311741">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="704356726551150" type="zombie_2">
+                            <param id="0" name="Instance variable">zombie</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="834600789947822">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="993377862764960" type="zombie_2">
+                                    <param id="0" name="Instance variable">direcao</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="2" inverted="1" name="Is playing" sid="152392574589790" type="zombie_2">
+                                    <param id="0" name="Animation">&quot;morte&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="132979235005567" type="zombie_2">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="583779350556840" type="zombie_2">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="440336384426357">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="637774116713407" type="zombie_2">
+                                    <param id="0" name="Instance variable">direcao</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                                <condition id="2" inverted="1" name="Is playing" sid="396415779956629" type="zombie_2">
+                                    <param id="0" name="Animation">&quot;morte&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="178146365370160" type="zombie_2">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="362521957359995" type="zombie_2">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="128846618606022">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="484660196246132" type="zombie_2">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="X co-ordinate">alma_personagem.X-5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="783091490133408" type="zombie_2">
+                                    <param id="0" name="Instance variable">direcao</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="730072779155596">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="163629784851890" type="zombie_2">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="X co-ordinate">alma_personagem.X+5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="134201708552080" type="zombie_2">
+                                    <param id="0" name="Instance variable">direcao</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="180701126978343">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="493414472858650" type="zombie_2">
+                                    <param id="0" name="Object">alma_personagem</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="828241753501620" type="zombie_2">
+                                    <param id="0" name="Instance variable">vidas</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="811977974132930" type="zombie_2">
+                                    <param id="0" name="Animation">&quot;ataque&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="424598206283397">
+                            <conditions>
+                                <condition id="1" inverted="1" name="Is overlapping another object" sid="240222510917059" type="zombie_2">
+                                    <param id="0" name="Object">alma_personagem</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="268327492724848" type="zombie_2">
+                                    <param id="0" name="Instance variable">vidas</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="448994377832438" type="zombie_2">
+                                    <param id="0" name="Animation">&quot;Andando&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="347662965348387">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="564528579743691" type="zombie_2">
+                                    <param id="0" name="Object">personagem</param>
+                                </condition>
+                                <condition id="2" name="Is playing" sid="929302098527246" type="zombie_2">
+                                    <param id="0" name="Animation">&quot;ataque&quot;</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="153004627016553" type="System">
+                                    <param id="0" name="Variable">receber_atack</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="578573205777881" type="zombie_2">
+                                    <param id="0" name="Instance variable">vidas</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Flash" id="0" name="Flash" sid="181365517027990" type="personagem">
+                                    <param id="0" name="&apos;On&apos; time">0.1</param>
+                                    <param id="1" name="&apos;Off&apos; time">0.1</param>
+                                    <param id="2" name="Duration">1.0</param>
+                                </action>
+                                <action id="-11" name="Subtract from" sid="552592688952497" type="System">
+                                    <param id="0" name="Variable">vidas_personagem</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="678237893824074" type="System">
+                                    <param id="0" name="Variable">receber_atack</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="312738411032455" type="System">
+                                    <param id="0" name="Seconds">1.0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="125439471411679" type="System">
+                                    <param id="0" name="Variable">receber_atack</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="541447178470419">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="283374712536541" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="535059411851970" type="zombie_1">
+                            <param id="0" name="Instance variable">zombie</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="668461616228534" type="zombie_1">
+                            <param id="0" name="Animation">&quot;parado&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="488957409592215">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="732067973889478" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="291565320614895" type="txt_zombies_count">
+                    <param id="0" name="Text">zombies.Count</param>
+                </action>
+                <action id="0" name="Set text" sid="845106470262141" type="txt_starCount">
+                    <param id="0" name="Text">star.Count</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="370475707391617">
+            <conditions>
+                <condition id="0" name="On function" sid="354165024522268" type="Function">
+                    <param id="0" name="Name">&quot;levelcomplete&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-4" name="Set layer visible" sid="119736291007837" type="System">
+                    <param id="0" name="Layer">&quot;gameover&quot;</param>
+                    <param id="1" name="Visibility">1</param>
+                </action>
+                <action behavior="ScrollTo" id="1" name="Set enabled" sid="787323426055722" type="gameover">
+                    <param id="0" name="State">1</param>
+                </action>
+                <action behavior="ScrollTo" id="1" name="Set enabled" sid="163105424676019" type="personagem">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action id="0" name="Set text" sid="792471843164603" type="txt_zombies_count2">
+                    <param id="0" name="Text">zombies.Count</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="665909663535305">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="919392196523102" type="System">
+                            <param id="0" name="First value">zombies.Count</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">zombie_count</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="439712913149795" type="1star">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                        <action id="0" name="Set local value" sid="643808919757153" type="WebStorage">
+                            <param id="0" name="Key">&quot;EF&quot;&amp;int(btn_next_level.next_level) -1</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="919248413592997">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="206096848615790" type="System">
+                            <param id="0" name="First value">zombies.Count</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="712908889607989" type="System">
+                            <param id="0" name="First value">zombies.Count</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Second value">zombie_count</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="807947432348106" type="1star">
+                            <param id="0" name="Frame number">1</param>
+                        </action>
+                        <action id="0" name="Set local value" sid="630839514009884" type="WebStorage">
+                            <param id="0" name="Key">&quot;EF&quot;&amp;int(btn_next_level.next_level)-1</param>
+                            <param id="1" name="Value">3</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="312046332465964">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="901331441221039" type="System">
+                            <param id="0" name="First value">zombies.Count</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="983093232154073" type="1star">
+                            <param id="0" name="Frame number">2</param>
+                        </action>
+                        <action id="0" name="Set local value" sid="686187652411410" type="WebStorage">
+                            <param id="0" name="Key">&quot;EF&quot;&amp;int(btn_next_level.next_level)-1</param>
+                            <param id="1" name="Value">4</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="375964772812228">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="667527844975294" type="System">
+                            <param id="0" name="First value">int(WebStorage.LocalValue(&quot;currentLevel&quot;))</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">int(btn_next_level.next_level -1)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="727016217091532" type="WebStorage">
+                            <param id="0" name="Key">&quot;currentLevel&quot;</param>
+                            <param id="1" name="Value">int(WebStorage.LocalValue(&quot;currentLevel&quot;)) + 1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="686909411931425">
+            <conditions>
+                <condition id="0" name="On function" sid="611110050752516" type="Function">
+                    <param id="0" name="Name">&quot;levelfailed&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-4" name="Set layer visible" sid="630995463350650" type="System">
+                    <param id="0" name="Layer">&quot;failed&quot;</param>
+                    <param id="1" name="Visibility">1</param>
+                </action>
+                <action behavior="ScrollTo" id="1" name="Set enabled" sid="821705935556897" type="HUDGAMEOVER">
+                    <param id="0" name="State">1</param>
+                </action>
+                <action behavior="ScrollTo" id="1" name="Set enabled" sid="804880507075218" type="personagem">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action id="0" name="Set text" sid="857349799439574" type="txt_zombies_countFAIL">
+                    <param id="0" name="Text">zombies.Count</param>
+                </action>
+                <action id="-9" name="Destroy" sid="803443910347614" type="personagem" />
+                <action id="-9" name="Destroy" sid="297617883371115" type="alma_personagem" />
+            </actions>
+        </event-block>
+        <event-block sid="203358083035721">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="950627718903305" type="alma_personagem">
+                    <param id="0" name="Object">star</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="753084369811060" type="star" />
+                <action id="-10" name="Add to" sid="427852286927811" type="System">
+                    <param id="0" name="Variable">stars</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="482701656848065">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="163761689954838" type="System">
+                            <param id="0" name="Variable">Sound</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;on&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="955672729799029" type="Audio">
+                            <param id="0" name="Audio file">Collect Gem</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="104316159405682">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="576884735649389" type="System">
+                    <param id="0" name="Variable">tempo</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="540232054424602" type="System">
+                    <param id="0" name="Seconds">0.5</param>
+                </action>
+                <action id="0" name="Call function" sid="369918211438232" type="Function">
+                    <param id="0" name="Name">&quot;levelfailed&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="494115455751488">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="944643937263665" type="System">
+                    <param id="0" name="Variable">stars</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">star_count</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="781617669996633" type="System">
+                    <param id="0" name="Seconds">0.5</param>
+                </action>
+                <action id="0" name="Call function" sid="143913711331751" type="Function">
+                    <param id="0" name="Name">&quot;levelcomplete&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="265219994748193">
+            <conditions>
+                <condition id="3" name="On touched object" sid="191413862822682" type="Touch">
+                    <param id="0" name="Object">restart</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="353913355563599">
+                    <conditions>
+                        <condition id="-9" name="Layer is visible" sid="476214202309591" type="System">
+                            <param id="0" name="Layer">&quot;gameover&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-26" name="Restart layout" sid="778408717149349" type="System" />
+                    </actions>
+                </event-block>
+                <event-block sid="126553563253279">
+                    <conditions>
+                        <condition id="-9" name="Layer is visible" sid="363863353753444" type="System">
+                            <param id="0" name="Layer">&quot;failed&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-26" name="Restart layout" sid="320572111741328" type="System" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="129362407668079">
+            <conditions>
+                <condition id="3" name="On touched object" sid="740730829099713" type="Touch">
+                    <param id="0" name="Object">go_levelSelect</param>
+                </condition>
+                <condition id="-9" name="Layer is visible" sid="771394668279655" type="System">
+                    <param id="0" name="Layer">&quot;gameover&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="655900389665771" type="System">
+                    <param id="0" name="Layout">level</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="114131901248389">
+            <conditions>
+                <condition id="3" name="On touched object" sid="733557909678874" type="Touch">
+                    <param id="0" name="Object">go_levelSelect</param>
+                </condition>
+                <condition id="-9" name="Layer is visible" sid="364653207223287" type="System">
+                    <param id="0" name="Layer">&quot;failed&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="597971365712468" type="System">
+                    <param id="0" name="Layout">level</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="240757440635449">
+                    <conditions>
+                        <condition id="-9" name="Layer is visible" sid="563641706592140" type="System">
+                            <param id="0" name="Layer">&quot;failed&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="155975680966991" type="System">
+                            <param id="0" name="Layout">level</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="493633779538915">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="702315888135075" type="System">
+                    <param id="0" name="Variable">vidas_personagem</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="801619375332888" type="Function">
+                    <param id="0" name="Name">&quot;levelfailed&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="722115001193616">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="375994003598060" type="alma_personagem" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="969721329424685" type="Function">
+                    <param id="0" name="Name">&quot;levelfailed&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="636023090641212">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="841344762294305" type="System">
+                    <param id="0" name="First value">zombies.Count</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="616411531559837">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="271245070721884" type="System">
+                            <param id="0" name="Interval (seconds)">1.0</param>
+                        </condition>
+                        <condition id="-9" inverted="1" name="Layer is visible" sid="221126704847530" type="System">
+                            <param id="0" name="Layer">&quot;gameover&quot;</param>
+                        </condition>
+                        <condition id="-9" inverted="1" name="Layer is visible" sid="540296405426653" type="System">
+                            <param id="0" name="Layer">&quot;failed&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="534303065711133" type="System">
+                            <param id="0" name="Variable">tempo</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="589586209344059" type="txt_zombies_count3">
+                            <param id="0" name="Text">tempo</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="568986815162532">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="272696658234961" type="zombie_1" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="662149665384116" type="zombie_1" />
+            </actions>
+        </event-block>
+        <event-block sid="456974827322682">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="737259087564721" type="zombie_2" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="407173934564546" type="zombie_2" />
+            </actions>
+        </event-block>
+        <event-block sid="821334605688272">
+            <conditions>
+                <condition behavior="Platform" id="7" name="On stopped" sid="571094105767510" type="zombie_1" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="332408446722323" type="zombie_1">
+                    <param id="0" name="Animation">&quot;parado&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="704063659139095">
+            <conditions>
+                <condition behavior="Platform" id="7" name="On stopped" sid="104632435526107" type="zombie_2" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="625567703195884" type="zombie_2">
+                    <param id="0" name="Animation">&quot;parado&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="727164175516310">
+            <conditions>
+                <condition id="3" name="On touched object" sid="119667178731198" type="Touch">
+                    <param id="0" name="Object">btn_next_level</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" sid="289328279468014" type="System">
+                    <param id="0" name="Layout">&quot;level&quot; &amp; btn_next_level.next_level</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="805818443370806">
+            <conditions>
+                <condition id="3" name="On touched object" sid="395405559751088" type="Touch">
+                    <param id="0" name="Object">btn_play</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="783869825840089" type="System">
+                    <param id="0" name="Layout">level</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="608874796532485">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="376189642565084" type="personagem">
+                    <param id="0" name="Object">Crate</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="629933786198043" type="Crate">
+                    <param id="0" name="Object">Crate2</param>
+                    <param id="1" name="Layer">&quot;main&quot;</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="124479807333146" type="Crate">
+                    <param id="0" name="Object">Crate2</param>
+                    <param id="1" name="Layer">&quot;main&quot;</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="588740872536444" type="Crate">
+                    <param id="0" name="Object">Crate2</param>
+                    <param id="1" name="Layer">&quot;main&quot;</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="146648602277756" type="Crate">
+                    <param id="0" name="Object">Crate2</param>
+                    <param id="1" name="Layer">&quot;main&quot;</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="885978071943554" type="Crate">
+                    <param id="0" name="Object">Bullet_3</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="568451474652529" type="Crate" />
+                <action behavior="Physics" id="3" name="Apply impulse" sid="826810484828187" type="Crate2">
+                    <param id="0" name="Impulse X">random(4.8)</param>
+                    <param id="1" name="Implulse Y">random(4.8)</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="679595718049130">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="847115163357949" type="personagem">
+                    <param id="0" name="Object">Bullet_3</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="678990219512815" type="Bullet_3" />
+                <action id="-10" name="Add to" sid="637925087224330" type="System">
+                    <param id="0" name="Variable">bullets</param>
+                    <param id="1" name="Value">10</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="966496836042390">
+            <conditions>
+                <condition id="17" name="On tap object" sid="267657004066366" type="Touch">
+                    <param id="0" name="Object">moregames</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="8" name="Open URL in new window" sid="311437104429412" type="Browser">
+                    <param id="0" name="URL">&quot;http://mixygames.com&quot;</param>
+                    <param id="1" name="Tag">&quot;NewWindow&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="538949358293133">
+            <conditions>
+                <condition id="17" name="On tap object" sid="568917033732861" type="Touch">
+                    <param id="0" name="Object">facebook</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="8" name="Open URL in new window" sid="458283507547169" type="Browser">
+                    <param id="0" name="URL">&quot;http://www.facebook.com/bnagames/?ref=aymt_homepage_panel&quot;</param>
+                    <param id="1" name="Tag">&quot;NewWindow&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="106408145989032">
+            <conditions>
+                <condition id="17" name="On tap object" sid="777179870471273" type="Touch">
+                    <param id="0" name="Object">home</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="3" name="Start" sid="526657200561921" type="home">
+                    <param id="0" name="From">1</param>
+                </action>
+                <action id="-16" name="Wait" sid="855147511594802" type="System">
+                    <param id="0" name="Seconds">0.3</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="821343021663418" type="System">
+                    <param id="0" name="Layout">level</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="911576711126483">
+            <conditions>
+                <condition id="17" name="On tap object" sid="348815324849299" type="Touch">
+                    <param id="0" name="Object">full_screen</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="552844330000381">
+                    <conditions>
+                        <condition id="10" name="Is fullscreen" sid="137821584112758" type="Browser" />
+                    </conditions>
+                    <actions>
+                        <action id="11" name="Cancel fullscreen" sid="164630440692323" type="Browser" />
+                    </actions>
+                </event-block>
+                <event-block sid="233680717819747">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="443395257585701" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="10" name="Request fullscreen" sid="497134657712112" type="Browser">
+                            <param id="0" name="Mode">3</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="367915850964287">
+            <conditions>
+                <condition id="17" name="On tap object" sid="725633283391829" type="Touch">
+                    <param id="0" name="Object">btnMusic</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="445760873145012">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="474415851285166" type="System">
+                            <param id="0" name="Variable">Music</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;on&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="6" name="Stop" sid="147633984201295" type="Audio">
+                            <param id="0" name="Tag">&quot;music&quot;</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="118346103257557" type="System">
+                            <param id="0" name="Seconds">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="233007131651911" type="System">
+                            <param id="0" name="Variable">Music</param>
+                            <param id="1" name="Value">&quot;off&quot;</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="695161527631334" type="btnMusic">
+                            <param id="0" name="Frame number">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="268647561315077">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="166741307015571" type="System">
+                            <param id="0" name="Variable">Music</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;off&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="558680964867796" type="Audio">
+                            <param id="0" name="Audio file">MainMenu</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">-10</param>
+                            <param id="1" name="Tag (optional)">&quot;music&quot;</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="351269718455588" type="System">
+                            <param id="0" name="Seconds">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="130054567673778" type="System">
+                            <param id="0" name="Variable">Music</param>
+                            <param id="1" name="Value">&quot;on&quot;</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="704343306222892" type="btnMusic">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="429766118720100">
+            <conditions>
+                <condition id="17" name="On tap object" sid="735877761047453" type="Touch">
+                    <param id="0" name="Object">btnSound</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="999472364662140">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="663951399637678" type="System">
+                            <param id="0" name="Variable">Sound</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;on&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="849321121139439" type="System">
+                            <param id="0" name="Seconds">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="248043027977338" type="System">
+                            <param id="0" name="Variable">Sound</param>
+                            <param id="1" name="Value">&quot;off&quot;</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="527384589461342" type="btnSound">
+                            <param id="0" name="Frame number">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="859985017860529">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="506122802471114" type="System">
+                            <param id="0" name="Variable">Sound</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;off&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="372188731443821" type="System">
+                            <param id="0" name="Seconds">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="124876258220721" type="System">
+                            <param id="0" name="Variable">Sound</param>
+                            <param id="1" name="Value">&quot;on&quot;</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="324772159539114" type="btnSound">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>
